@@ -31,9 +31,8 @@ def mMenu():
     m6='OS Clone Execute'
     m7='Copy Log to Onedrive'
     m8='Update Linux Test Script'
-    m9='Update DOS Test Script'
     ml='Power off system'
-    options = [m1,m2,m3,m4,m5,m6,m7,m8,m9,ml]
+    options = [m1,m2,m3,m4,m5,m6,m7,m8,ml]
 
     os.system('clear')
     print(Fore.YELLOW + "%s MAIN-MENU" % booted + Style.RESET_ALL + " Build by EFCO SamLee")
@@ -56,8 +55,6 @@ def mMenu():
         copyLog()
     elif choice == m8: #Update Linux script
         gitPull()        
-    elif choice == m9: #Update DOS script
-        dosMenu()
     #Last of list
     elif choice == ml: #power off system
         print("The system will shutdown after 5 secs!")
@@ -208,11 +205,6 @@ def gitPull():
 
     sys.stdout.flush()
     os.execv(sys.executable, ["python3"] + sys.argv)
-
-def dosMenu():
-    print("dos tool here")
-    time.sleep(5)
-    mMenu()
 
 mMenu()
 
