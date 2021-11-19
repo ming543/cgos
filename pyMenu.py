@@ -10,7 +10,8 @@ from colorama import Fore
 from colorama import Style
 
 #start test file 
-sT = "/home/production/data/ventoyTest/t.sh"
+#sT = "/home/production/data/ventoyTest/t.sh"
+sT = "/run/initramfs/memory/data/cgos/t.sh"
 #Check system boot by UEFI or LEGACY mode
 booted = "UEFI" if os.path.exists("/sys/firmware/efi") else "LEGACY"
 #Get revision
