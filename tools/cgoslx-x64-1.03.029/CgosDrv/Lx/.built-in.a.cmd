@@ -1,1 +1,0 @@
-cmd_/home/production/data/ventoyTest/tools/cgoslx-x64-1.03.029/CgosDrv/Lx/built-in.a := rm -f /home/production/data/ventoyTest/tools/cgoslx-x64-1.03.029/CgosDrv/Lx/built-in.a; ar cDPrST /home/production/data/ventoyTest/tools/cgoslx-x64-1.03.029/CgosDrv/Lx/built-in.a 
