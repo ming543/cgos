@@ -78,6 +78,7 @@ def logBuild():
     logging.info('Test PN : ' + pn)
     logging.info('Test SN : ' + sn)
 
+print("cgos BIOS update")
 print("Input 0000 Back to MainMenu, Input SN Start Test: ")
 sn = input()
 # time.sleep(3)
