@@ -16,15 +16,14 @@ def backMainMenu():
 
 def biosRevGet():
     os.chdir("/run/initramfs/memory/data/cgos/tools/cgutillx/cgutlcmd")
-    biosInfo = subprocess.check_output("./cgutlcmd cginfo /ot:board /dump /bios", shell=True).splitlines()
-    biosRev = str(biosInfo[6])
-    biosOem = str(biosInfo[7])
+    biosInfo = subprocess.check_output("./cgutlcmd cginfo /ot:board /dump /bios", shell=True)
+    biosInfo = biosInfo.splitlines()
+    biosRev = str(biosInfo[6])[-9:-1]
+    biosOem = str(biosInfo[7])[-9:-1]
     print (biosRev)
     print (biosOem)
 #    print (biosRev)
 
-    #biosRev = str(biosInfo[6])[-9:-1]
-    #biosOem = str(biosInfo[7])[-9:-1]
 #print("BIOS UPD")
 biosRevGet()
 
