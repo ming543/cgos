@@ -10,7 +10,8 @@ from colorama import Fore
 # from colorama import Style
 
 # start test file
-sT = "/home/production/pyPackage/t.sh"
+# sT = "/home/production/pyPackage/t.sh"
+sT = "/run/initramfs/memory/data/cgos/t.sh"
 # Check system boot by UEFI or LEGACY mode
 booted = "UEFI" if os.path.exists("/sys/firmware/efi") else "LEGACY"
 # Get revision
@@ -29,14 +30,14 @@ def mMenu():
     m5 = 'OS Clone Setup'
     m6 = 'OS Clone Execute'
     m7 = 'Copy Log to Onedrive'
-    m8 = 'Update Linux Test Script'
-    m9 = 'Update DOS Test Script'
+    m8 = 'Update cgos Linux Test Script'
+    m9 = 'Update BIOS'
     ml = 'Power off system'
     options = [m1, m2, m3, m4, m5, m6, m7, m8, m9, ml]
 
     os.system('clear')
     print(Fore.YELLOW + "%s MAIN-MENU" % booted + Fore.RESET, end='')
-    print(" Build by EFCO SamLee")
+    print(" Build by EFCO C.M.Lee")
     print("Revision %s" % loginfo)
     choice = enquiries.choose('  Choose options: ', options)
 
@@ -57,7 +58,7 @@ def mMenu():
     elif choice == m8:  # Update Linux script
         gitPull()
     elif choice == m9:  # Update DOS script
-        dosMenu()
+        biosUpd()
     # Last of list
     elif choice == ml:  # power off system
         print("The system will shutdown after 5 secs!")
@@ -68,10 +69,10 @@ def mMenu():
 # Show all PN of testAssy
 def aMenu():
     index = []
-    aPath = "/home/production/pyPackage/testAssy"
+    aPath = "/run/initramfs/memory/data/cgos/testAssy"
     os.system('clear')
     print(Fore.YELLOW + "%s ASSY-MENU" % booted + Fore.RESET, end='')
-    print(" Build by EFCO SamLee")
+    print(" Build by EFCO C.M.Lee")
     print("Revision %s" % loginfo)
     for filename in os.listdir(aPath):
         index += [filename]
@@ -92,7 +93,7 @@ def pMenu():
     options = [p1, p2, pl]
     os.system('clear')
     print(Fore.YELLOW + "%s PCBA-MENU" % booted + Fore.RESET, end='')
-    print(" Build by EFCO SamLee")
+    print(" Build by EFCO C.M.Lee")
     print("Revision %s" % loginfo)
     choice = enquiries.choose('  Choose options: ', options)
     if choice == p1:
@@ -145,8 +146,9 @@ def copyLog():
         response = os.system("ping -c 1 -w 1 8.8.8.8")
         if response == 0:
             print("PING OK")
-            lF = "/home/production/log"
-            oF = "ID-Enbik:General/log"
+            lF = "/run/initramfs/memory/data/logfile"
+            # oF = "ID-Enbik:General/log"
+            oF = "onedrive:General/log"
             rC = subprocess.call("rclone -v copy %s %s -P" % (lF, oF), shell=True)
             if rC == 0:  # check rclone pass or fail
                 print(Fore.GREEN + "Log copy to onedrive done!!!" + Fore.RESET)
@@ -184,10 +186,12 @@ def gitPull():
     os.execv(sys.executable, ["python3"] + sys.argv)
 
 
-def dosMenu():
-    print("dos tool here")
-    time.sleep(5)
-    mMenu()
+def biosUpd():
+    bPath = "/run/initramfs/memory/data/cgos"
+    f = open(sT, "w")  # sT is start test t.sh file
+    f.write("cd " + bPath + "&& python3 biosUpd.py")
+    f.close()
+    subprocess.call("sh %s" % sT, shell=True)
 
 
 mMenu()
