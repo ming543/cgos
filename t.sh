@@ -1,1 +1,1 @@
-cd /run/initramfs/memory/data/cgos&& python3 biosUpd.py
+cd /run/initramfs/memory/data/cgos && python3 biosUpd.py
