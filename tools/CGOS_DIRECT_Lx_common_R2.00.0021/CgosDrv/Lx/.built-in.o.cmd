@@ -1,1 +1,0 @@
-cmd_/run/initramfs/memory/data/cgos/tools/CGOS_DIRECT_Lx_common_R2.00.0021/CgosDrv/Lx/built-in.o :=  rm -f /run/initramfs/memory/data/cgos/tools/CGOS_DIRECT_Lx_common_R2.00.0021/CgosDrv/Lx/built-in.o; ar rcsD /run/initramfs/memory/data/cgos/tools/CGOS_DIRECT_Lx_common_R2.00.0021/CgosDrv/Lx/built-in.o
